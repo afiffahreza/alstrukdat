@@ -177,7 +177,7 @@ void enter_command(){
         enter_command();
     }
     else if (isKataSama(kataCommand, listPilihanCommand[12], panjangKata)){
-        printf("BYEEE\n");
+        printf("GOOD BYE\n");
     }
     else {
         printf("Command tidak ditemukan, silahkan coba lagi!\n");
