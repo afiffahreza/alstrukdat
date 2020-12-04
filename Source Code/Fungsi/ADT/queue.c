@@ -45,7 +45,7 @@ void CreateEmptyQueue(Queue *Q, int Max) {
 	}
 }
 
-void DealokasiQ(Queue *Q) {
+void DeAlokasi(Queue *Q) {
 /* Proses: Mengembalikan memori Q */
 /* I.S. Q pernah dialokasi */
 /* F.S. Q menjadi tidak terdefinisi lagi, MaxEl(Q) diset 0 */
@@ -93,3 +93,22 @@ Q mungkin kosong */
 		Head(*Q)++;
 	}
 }
+
+// typedef struct {
+// 	int NoPelanggan;
+// 	Point Lokasi;
+// 	Komponen TabKomponen[8]; /* tabel penyimpan komponen */
+// 	int Invoice; /*pembayaran setelah orderan selesai diantar*/
+// } infoPemesan;
+
+
+void dummy(infoPemesan *info,int x,Point v,const Komponen Tab[],int I){
+	info->NoPelanggan = x;
+	info->Lokasi = v;
+	info->Invoice = I;
+	info->TabKomponen[8] = Tab[8];
+}
+
+//void addkomponen(infoPemesan *bebas, Komponen K){}
+
+

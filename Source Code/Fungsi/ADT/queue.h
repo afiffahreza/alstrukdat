@@ -17,7 +17,7 @@
 // DEFINISI ELEMEN DAN ADDRESS
 typedef struct {
 	int NoPelanggan;
-	int Lokasi;
+	Point Lokasi;
 	Komponen TabKomponen[8]; /* tabel penyimpan komponen */
 	int Invoice; /*pembayaran setelah orderan selesai diantar*/
 } infoPemesan;
@@ -39,10 +39,11 @@ int NBElmt (Queue Q);
 
 // KONSTRUKTOR
 void CreateEmptyQueue (Queue *Q,int Max);
-void DealokasiQ (Queue *Q);
+void Dealokasi (Queue *Q);
 
 // TAMBAH KURANG ELEMEN
 void Enqueue (Queue *Q ,infoPemesan X);
 void Dequeue (Queue *Q,infoPemesan *X);
+void dummy(infoPemesan *info,int x,Point v,const Komponen Tab[],int I);
 
 #endif
