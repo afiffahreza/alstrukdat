@@ -28,14 +28,23 @@ Stack CurrentBuild;
 
 void status(){
     printf("Uang tersisa: $%d\n", Uang);
-    printf("Build yang sedang dikerjakan: pesanan %d untuk pelanggan %d.\n", Head(Order), Order.Pemesan->NoPelanggan );
-    printf("Lokasi: pemain sedang berada pada %d\n", CurrentLocation);
-    printf("Inventory anda: %d", Inventory.TabKomponen);
+    printf("Build yang sedang dikerjakan: pesanan %d untuk pelanggan %d.\n", Order.Pemesan[Head(Order)].NoPesanan, Order.Pemesan[Head(Order)].NoPelanggan);
+    if (CurrentLocation == 0) {
+        printf("Lokasi: pemain sedang berada pada base.\n");
+    }
+    else if (CurrentLocation == 1)
+        printf("Lokasi: pemain sedang berada pada shop.\n");
+    else {     
+        printf("Lokasi: pemain sedang berada pada lokasi pelanggan %d.\n",CurrentLocation-1);
+    }
+    // inventory dibikin for
+    //printf("Inventory anda: %d", Inventory.TabKomponen);
 }
 
 void deliver(){
-    if(CurrentLocation == Order.Pemesan[Head(Order)].Lokasi){
-        Head(Order) = Head(Order)+1;
+    if(CurrentLocation == Order.Pemesan[Head(Order)].NoPelanggan+1){
         Uang = Uang + Order.Pemesan->Invoice;
+        infoPemesan tmpDel;
+        Dequeue(&Order,&tmpDel);
     }
 }

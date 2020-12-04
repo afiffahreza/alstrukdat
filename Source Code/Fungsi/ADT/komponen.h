@@ -13,6 +13,8 @@ typedef struct {
     int Capacity;
 } ListKomponen;
 
+char* namaKomponen(int ID);
+
 /*
 #define Neff(T) (T).Neff
 #define Capacity(T) (T).Capacity
@@ -36,5 +38,6 @@ GPU = 6
 Storage = 7
 PSU = 8
 */
+
 
 #endif

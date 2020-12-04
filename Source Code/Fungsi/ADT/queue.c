@@ -45,7 +45,7 @@ void CreateEmptyQueue(Queue *Q, int Max) {
 	}
 }
 
-void DeAlokasi(Queue *Q) {
+void DealokasiQ(Queue *Q) {
 /* Proses: Mengembalikan memori Q */
 /* I.S. Q pernah dialokasi */
 /* F.S. Q menjadi tidak terdefinisi lagi, MaxEl(Q) diset 0 */
@@ -61,19 +61,20 @@ void Enqueue(Queue *Q, infoPemesan X) {
 	address i, j;
 	/* Algoritma */
 	if (IsQueueEmpty(*Q)) {
-		Head(*Q)=0;
+		Head(*Q) = 1;
+		Tail(*Q) = 1;
 	}
-	else /* Q tidak kosong */ {
-		if (Tail(*Q)==MaxEl(*Q)-1) { /* Geser elemen smp Head(Q)=0 */
+	else if (Tail(*Q)==MaxEl(*Q)-1) { /* Geser elemen smp Head(Q)=0 */
 		i = Head(*Q); j = 0;
-			do {
-				*((*Q).Pemesan+j) = *((*Q).Pemesan+i);
-				i++; j++;
-			} while (i<=Tail(*Q));
-			Tail(*Q) = NBElmt(*Q)-1; Head(*Q) = 0;
-		}
+		do {
+			*((*Q).Pemesan+j) = *((*Q).Pemesan+i);
+			i++; j++;
+		} while (i<=Tail(*Q));
+		Tail(*Q) = NBElmt(*Q)-1; Head(*Q) = 0;
 	}
-	Tail(*Q)++;
+	else {
+		Tail(*Q)++;
+	}
 	InfoTail(*Q)=X;
 }
 
@@ -93,22 +94,3 @@ Q mungkin kosong */
 		Head(*Q)++;
 	}
 }
-
-// typedef struct {
-// 	int NoPelanggan;
-// 	Point Lokasi;
-// 	Komponen TabKomponen[8]; /* tabel penyimpan komponen */
-// 	int Invoice; /*pembayaran setelah orderan selesai diantar*/
-// } infoPemesan;
-
-
-void dummy(infoPemesan *info,int x,Point v,const Komponen Tab[],int I){
-	info->NoPelanggan = x;
-	info->Lokasi = v;
-	info->Invoice = I;
-	info->TabKomponen[8] = Tab[8];
-}
-
-//void addkomponen(infoPemesan *bebas, Komponen K){}
-
-

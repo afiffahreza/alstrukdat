@@ -177,7 +177,7 @@ void enter_command(){
         enter_command();
     }
     else if (isKataSama(kataCommand, listPilihanCommand[12], panjangKata)){
-        printf("GOOD BYE\n");
+        printf("Terimakasih telah bermain, sampai jumpa kembali!\n");
     }
     else {
         printf("Command tidak ditemukan, silahkan coba lagi!\n");
@@ -196,23 +196,45 @@ void main_menu(){
 
     int pil; scanf("%d",&pil);
 
-    if(pil==1){
+    if (pil==1){
+
         Uang = 1000;
-        //printf("masuk pil 1\n");
+
+        // INIT INVENTORY
+
         CreateEmptyGraph(&Jalur);
         adrNode nodeBangunan = AlokasiNode(0);
         Jalur.First = nodeBangunan;
         for (int i = 1; i < NbBangungan; i++){
-            //printf("%d\n",i);
             nodeBangunan->Next = AlokasiNode(i);
             nodeBangunan = nodeBangunan->Next;
         }
         CurrentLocation = 0;
-        //printf("sebelum mtg\n");
         MatrixToGraph(Map,&Jalur);
-        //printf("selesai matriks to graph\n");
-        // init
+
+        infoPemesan dataOrder[7] = {
+            {1,1,{1,4,7,10,13,16,19,22},1500},
+            {2,2,{2,4,7,10,13,16,19,22},1400},
+            {3,3,{0,4,7,10,13,16,19,22},1400},
+            {4,4,{2,5,7,10,13,16,19,22},1500},
+            {5,5,{1,4,8,10,13,16,19,22},1500},
+            {6,6,{1,4,7,10,13,16,19,22},1300},
+            {7,7,{0,4,7,10,13,16,19,22},1500}
+        };
+
+        CreateEmptyQueue(&Order,30);
+        for (int l=0; l<7; l++){
+            Enqueue(&Order, dataOrder[l]);
+        }
+
         enter_command();
+    }
+    else if (pil==2){
+        //load
+    }
+    else {
+        printf("Nomor pilihan salah, mengulang game.\n");
+        main_menu();
     }
 
 }

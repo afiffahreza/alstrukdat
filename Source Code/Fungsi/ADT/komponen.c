@@ -67,6 +67,7 @@ Komponen ListKomp[24][3]={
     {24,150,8}
 };
 
-void namaKomponen (int ID, char* Nama[]){
-    (*Nama) = IDKomponen[ID];
+char* namaKomponen(int ID){
+    char* nama = IDKomponen[ID];
+    return nama;
 }
