@@ -26,21 +26,21 @@ Queue Order;
 Stack CurrentBuild;
 #endif
 
-MakeEmpty(&Inventory,99); //awal bgt inventory bikin ksong dulu
+//MakeEmpty(&Inventory,99); //awal bgt inventory bikin ksong dulu
 
 void checkorder(){
-    printf("Nomor Order: %d\n",Head(Order));
+    printf("Nomor Order: %d\n",InfoHead(Order).NoPesanan);
     printf("Pemesan: Pelanggan %d\n",InfoHead(Order).NoPelanggan);
     printf("Invoice: %d\n",InfoHead(Order).Invoice);
-    for (int i = 1; i<8 ; i++) {
-        for (int j = 1; j<24 ; j++) {
-            printf("%d. %s \n",i,InfoHead(Order).TabKomponen[i].KodeKomponen[j]);
-        }
+    for (int i = 1; i<=8 ; i++) {
+        int ID=InfoHead(Order).TabKodeKomponen[i];
+        printf("%d. %s \n",i,namaKomponen(ID));
     }
 }
 
 void shop(){
     int belikomp,kuantitas,total;
+    boolean ada=false;
     printf("Komponen yang tersedia:\n");
     for (int i=0;i<24;i++){
         printf("%d. %s - ""$""%d\n",(i+1),IDKomponen[i],ListKomp[i]->Harga);
@@ -52,6 +52,7 @@ void shop(){
     for (int i=0;i<24;i++){
         if (i==belikomp){
             total = ((ListKomp[i-1]->Harga)*(kuantitas));
+            ada=true;
             if (total>Uang){
                 printf("Uang tidak cukup!");
             } else{
@@ -61,10 +62,14 @@ void shop(){
             }
         }
     }
+    if(ada==false){
+        printf("Tidak ada komponen, silahkan ulangi!");
+    }
 }
 
 void end_day(){
     MakeEmpty(&Inventory,99);
-    
+    while (!IsQueueFull(Order));
+        Enqueue(&Order,dataOrder);
     //masukin orderan baru sampe queue stack full lg
 }
