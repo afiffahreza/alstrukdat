@@ -5,7 +5,7 @@
 #include "komponen.h"
 
 typedef struct {
-    Komponen *TabKomponen; 
+    Komponen *TabKomponen;
     int *Kuantitas;
     int Neff;
     int MaxEl;

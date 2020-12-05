@@ -2,15 +2,15 @@
 #include <stdlib.h>
 
 // Library ADT
-#include "Fungsi/ADT/arraydin.h"
+#include "Fungsi/ADT/arraydin.c"
 #include "Fungsi/ADT/boolean.h"
-#include "Fungsi/ADT/point.h"
-#include "Fungsi/ADT/queue.h"
-#include "Fungsi/ADT/stack.h"
-#include "Fungsi/ADT/graph.h"
-#include "Fungsi/ADT/matriks.h"
-#include "Fungsi/ADT/mesinkar.h"
-#include "Fungsi/ADT/mesinkata.h"
+#include "Fungsi/ADT/point.c"
+#include "Fungsi/ADT/queue.c"
+#include "Fungsi/ADT/stack.c"
+#include "Fungsi/ADT/graph.c"
+#include "Fungsi/ADT/matriks.c"
+#include "Fungsi/ADT/mesinkar.c"
+#include "Fungsi/ADT/mesinkata.c"
 
 // Variable Global
 #ifndef GLOBALVAR
@@ -25,14 +25,15 @@ Matriks Map;
 Graph Jalur;
 Queue Order;
 Stack CurrentBuild;
+boolean MulaiBuild = false;
 #endif
 
 // FUNGSI
-#include "Fungsi/load-save.h"
-#include "Fungsi/move-map.h"
-#include "Fungsi/build-component.h"
+#include "Fungsi/load-save.c"
+#include "Fungsi/move-map.c"
+#include "Fungsi/build-component.c"
 //#include "Fungsi/checkorder-shop-endday.h"
-#include "Fungsi/status-deliver.h"
+#include "Fungsi/status-deliver.c"
 
 void load_konfig(){
 
@@ -70,7 +71,6 @@ void load_konfig(){
         for (int i=0; i < panjangKata; i++) {
             lokX = 10*lokX + (CKata.TabKata[i+1] - '0');
         }
-        printf("x = %d ",lokX);
         ADVKATAFILE();
         panjangKata = CKata.Length;
         int lokY = 0;
@@ -146,18 +146,22 @@ void enter_command(){
     }
     else if (isKataSama(kataCommand, listPilihanCommand[4], panjangKata)){
         //FUNGSI STARTBUILD
+        startbuild();
         enter_command();
     }
     else if (isKataSama(kataCommand, listPilihanCommand[5], panjangKata)){
         //FUNGSI ADDCOMPONENT
+        addcomponent();
         enter_command();
     }
     else if (isKataSama(kataCommand, listPilihanCommand[6], panjangKata)){
         //FUNGSI REMOVECOMPONENT
+        removecomponent();
         enter_command();
     }
     else if (isKataSama(kataCommand, listPilihanCommand[7], panjangKata)){
         //FUNGSI FINISHBUILD
+        finishbuild();
         enter_command();
     }
     else if (isKataSama(kataCommand, listPilihanCommand[8], panjangKata)){
@@ -188,10 +192,22 @@ void enter_command(){
 
 void main_menu(){
 
-    printf("Selamat datang di Game Santo Tycoon\n");
-    printf("Pilihan:\n");
-    printf("1. NEW GAME\n");
-    printf("2. LOAD GAME\n");
+    printf("    .   .   .                .___.    __.      ,     .___.               \n");
+    printf("    |   | _ | _. _ ._ _  _     | _   (__  _.._-+-_     |  . _. _  _ ._   \n");
+    printf("    |_|_|(/,|(_.(_)[ | )(/,    |(_)  .__)(_][ )|(_)    ||_|(_.(_)(_)[ )  \n");
+    printf("                                                        ._|              \n");
+    printf("    .__  . .             \n");
+    printf("    [__)*|*|_  _.._   *  \n");
+    printf("    |   |||[ )(_][ )  *  \n");
+    printf("                         \n");
+    printf("     ,    .  .           .__              \n");
+    printf("    /|    |* | _.     ,  [ __ _.._ _  _   \n");
+    printf("    .|.*  | *|(/,|_|_|   [_./(_][ | )(/,  \n");
+    printf("                                          \n");
+    printf("     _,   .           .  .__             \n");
+    printf("    '_)   |    _  _. _|  [ __ _.._ _  _  \n");
+    printf("    /_.*  |___(_)(_](_]  [_./(_][ | )(/, \n");
+    printf("                                         \n \n");
     printf("NOMOR PILIHAN: ");
 
     int pil; scanf("%d",&pil);
@@ -227,13 +243,18 @@ void main_menu(){
             Enqueue(&Order, dataOrder[l]);
         }
 
+        printf("     __.   .            ,   .__                    \n");
+        printf("    (__  _ | _.._ _  _.-+-  [__) _ ._.._ _  _.*._  \n");
+        printf("    .__)(/,|(_][ | )(_] |   [__)(/,[  [ | )(_]|[ ) \n");
+        printf("                                                   \n");
+
         enter_command();
     }
     else if (pil==2){
         //load
     }
     else {
-        printf("Nomor pilihan salah, mengulang game.\n");
+        printf("Nomor pilihan salah, mengulang game. \n \n");
         main_menu();
     }
 

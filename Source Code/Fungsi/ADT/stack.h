@@ -13,11 +13,11 @@ typedef struct
 } Stack;
 
 #define Top(S) (S).TOP
-#define InfoTop(S) (S).Build[(S).TOP]
+#define InfoTop(S) (S).Build[(S).TOP-1]
 
 /* Definisi stack S kosong : S.TOP = Nil */
 /* S.TOP = jumlah element stack */
-/* S.T[S.TOP-1] = element paling atas */
+/* S.Build[S.TOP-1] = element paling atas */
 
 /* ********* Prototype ********* */
 
