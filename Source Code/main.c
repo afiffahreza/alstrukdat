@@ -254,7 +254,7 @@ void main_menu(){
         //load
     }
     else {
-        printf("Nomor pilihan salah, mengulang game. \n \n");
+        printf("Data belum ada, mengulang game. \n \n");
         main_menu();
     }
 
