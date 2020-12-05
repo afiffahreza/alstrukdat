@@ -35,25 +35,17 @@ void startbuild(){
 }
 
 void finishbuild(){
+    int panjangKata = CKata.Length;
     int count = 0;
-    infoPemesan dataOrder[7] = {
-            {1,1,{1,4,7,10,13,16,19,22},1500},
-            {2,2,{2,4,7,10,13,16,19,22},1400},
-            {3,3,{0,4,7,10,13,16,19,22},1400},
-            {4,4,{2,5,7,10,13,16,19,22},1500},
-            {5,5,{1,4,8,10,13,16,19,22},1500},
-            {6,6,{1,4,7,10,13,16,19,22},1300},
-            {7,7,{0,4,7,10,13,16,19,22},1500}
-        };
-
     if (!MulaiBuild) {
         printf("Kamu belum memulai membuat build. Silahkan mulai pembuatan build terlebih dahulu! \n");
 	}
 	else {
-        for (int i = 0; i < Top(CurrentBuild); i++) {
-            // if (InfoTop(CurrentBuild).KodeKomponen[i] == dataOrder->TabKodeKomponen[i]) {
-                // count += 1;
-            //}
+        for (int i = 0; i < 8; i++) {
+            int IDKomp = InfoHead(Order).TabKodeKomponen[i];
+            if (strcmp(CurrentBuild.Build[i], namaKomponen(IDKomp)) == 0) {
+                count += 1;
+            }
         }
         if (count == 8) {
             printf("Pesanan %d telah selesai. Silahkan antar ke pelanggan %d! \n", Head(Order), InfoHead(Order).NoPelanggan);
