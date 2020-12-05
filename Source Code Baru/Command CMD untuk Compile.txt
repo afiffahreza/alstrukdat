@@ -1,0 +1,1 @@
+gcc -o main main.c Fungsi/ADT/arraydin.c Fungsi/ADT/point.c Fungsi/ADT/queue.c Fungsi/ADT/stack.c Fungsi/ADT/graph.c Fungsi/ADT/matriks.c Fungsi/ADT/mesinkar.c Fungsi/ADT/mesinkata.c
