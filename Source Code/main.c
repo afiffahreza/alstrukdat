@@ -2,15 +2,15 @@
 #include <stdlib.h>
 
 // Library ADT
-#include "Fungsi/ADT/arraydin.c"
+#include "Fungsi/ADT/arraydin.h"
 #include "Fungsi/ADT/boolean.h"
-#include "Fungsi/ADT/point.c"
-#include "Fungsi/ADT/queue.c"
-#include "Fungsi/ADT/stack.c"
-#include "Fungsi/ADT/graph.c"
-#include "Fungsi/ADT/matriks.c"
-#include "Fungsi/ADT/mesinkar.c"
-#include "Fungsi/ADT/mesinkata.c"
+#include "Fungsi/ADT/point.h"
+#include "Fungsi/ADT/queue.h"
+#include "Fungsi/ADT/stack.h"
+#include "Fungsi/ADT/graph.h"
+#include "Fungsi/ADT/matriks.h"
+#include "Fungsi/ADT/mesinkar.h"
+#include "Fungsi/ADT/mesinkata.h"
 
 // Variable Global
 #ifndef GLOBALVAR
@@ -25,6 +25,7 @@ Matriks Map;
 Graph Jalur;
 Queue Order;
 Stack CurrentBuild;
+int statusPermainan;
 boolean MulaiBuild = false;
 #endif
 
@@ -32,7 +33,7 @@ boolean MulaiBuild = false;
 #include "Fungsi/load-save.c"
 #include "Fungsi/move-map.c"
 #include "Fungsi/build-component.c"
-//#include "Fungsi/checkorder-shop-endday.h"
+//#include "Fungsi/checkorder-shop-endday.c"
 #include "Fungsi/status-deliver.c"
 
 void load_konfig(){

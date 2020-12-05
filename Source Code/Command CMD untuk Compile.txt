@@ -1,0 +1,3 @@
+gcc -o main.c Fungsi/ADT/arraydin.c Fungsi/ADT/point.c Fungsi/ADT/queue.c Fungsi/ADT/stack.c Fungsi/ADT/graph.c Fungsi/ADT/matriks.c Fungsi/ADT/mesinkar.c Fungsi/ADT/mesinkata.c
+
+gcc -o main main.o load-save.o move-map.o build-component.o checkorder-shop-endday.o status-deliver.o arraydin.o point.o queue.o stack.o graph.o matriks.o mesinkar.o mesinkata.o

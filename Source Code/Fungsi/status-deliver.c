@@ -24,6 +24,7 @@ Matriks Map;
 Graph Jalur;
 Queue Order;
 Stack CurrentBuild;
+int statusPermainan;
 #endif
 
 void status(){

@@ -8,7 +8,7 @@ static FILE * konfig_file;
 static int retval;
 
 void STARTFILE() {
-	konfig_file = fopen("konfig.txt","r");
+	konfig_file = fopen("FILE_KONFIG.txt","r");
 	ADVFILE();
 }
 
